@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Performances & Script Practice Hub</title>
+    <style>
+        :root {
+            --primary: #6366F1;
+            --primary-dark: #4338CA;
+            --accent-gold: #F59E0B;
+            --accent-curtain: #E11D48;
+            --success: #10B981;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            color: #FFFFFF;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin: 10px 0 5px 0;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin: 0;
+            opacity: 0.9;
+            color: #CBD5E1;
+        }
+
+        /* Spotlight Welcome Card */
+        .welcome-card {
+            background: linear-gradient(180deg, #FEF3C7 0%, #FDE68A 100%);
+            border: 3px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 22px 28px;
+            max-width: 850px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+
+        .welcome-card h2 {
+            margin: 0 0 10px 0;
+            color: #B45309;
+            font-size: 26px;
+        }
+
+        .welcome-card p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .performance-card {
+            background: #FFFFFF;
+            border-radius: 18px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #E2E8F0;
+        }
+
+        .performance-card.active {
+            border-color: #818CF8;
+        }
+
+        .performance-card.active:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+        }
+
+        .performance-card.locked {
+            opacity: 0.75;
+            background-color: #F8FAFC;
+        }
+
+        .card-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 12px;
+            align-self: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-badge.marathi {
+            background: var(--accent-curtain);
+        }
+
+        .performance-card.locked .card-badge {
+            background: #94A3B8;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 5px 0 10px 0;
+            color: #1E293B;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+
+        .btn-launch {
+            display: inline-block;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 15px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-launch:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .btn-locked {
+            background: #CBD5E1;
+            color: #64748B;
+            cursor: not-allowed;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 35px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #FDE68A;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎭 Stage Performances Hub</h1>
+        <p>Interactive Script Practice, Audio Prompters & Play Rehearsals</p>
+    </header>
+
+    <div class="welcome-card">
+        <h2>Welcome Performers & Actors! 🎬</h2>
+        <p>Select a drama module below to rehearse your dialogues line-by-line. Pick your character, let the audio prompter read the other roles, and practice delivering your lines!</p>
+    </div>
+
+    <div class="grid-container">
+
+        <div class="performance-card active">
+            <span class="card-badge marathi">मराठी नाटक</span>
+            <div class="card-title">हकीम गिरधारीलाल</div>
+            <div class="card-desc">Interactive Marathi drama practice tool with Marathi Text-to-Speech audio prompts.</div>
+            <a href="Tarabaiche-dole.html" class="btn-launch" target="_blank">
+                Practice (मराठी) 🎭
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Stage Performances Repository &copy; 2026 | Built for <a href="https://github me" target="_blank">Rehearsals & Drama Practice</a></p>
+    </footer>
+
+</body>
+</html>
